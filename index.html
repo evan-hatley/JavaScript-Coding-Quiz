@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript Coding Quiz</title>
+    <link rel="stylesheet" href="Assets/style.css"/>
 </head>
+
 <body>
-    
+   <header>
+     <h1>JavaScript Coding Quiz</h1>
+   </header> 
+    <div class= "quiz-container">
+        <button id="gameStart">Take the Quiz?</button>
+        <div id="questionContainer">
+        <h3 id="questions"></h3>
+         <div id="answers-container">
+            <button class="choice"></button>
+            <button class="choice"></button>
+            <button class="choice"></button>
+            <button class="choice"></button>
+         </div>
+        </div>
+
+        <div id="score"></div>
+        <div id="timer"></div>
+    </div>
+
+<script src="Assets/script.js"></script>   
 </body>
 </html>

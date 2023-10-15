@@ -1,0 +1,44 @@
+* {
+background-color: beige;
+
+
+}
+
+header {
+background-color: aquamarine;
+
+}
+
+.quiz-container {
+background-color: azure;
+
+}
+
+#gameStart {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    margin: 10px;
+
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+background-color: blue;
+padding: 10px 20px;
+font-size: 16px;
+margin: 10px;
+color: white;
+}
+
+#timer {
+background-color: maroon;
+color: aliceblue;
+
+}
+
