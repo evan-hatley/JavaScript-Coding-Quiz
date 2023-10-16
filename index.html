@@ -11,18 +11,20 @@
    <header>
      <h1>JavaScript Coding Quiz</h1>
    </header> 
-    <div class= "quiz-container">
+  <!-- This button is linked to the JS to launch the 'begin' function when clicking on the button -->
         <button id="gameStart">Take the Quiz?</button>
+         <!-- I have all of the quiz elements in this body to show the user the question and provide them with their choices, marked by the class 'choice' -->
+    <div class= "quiz-container">
         <div id="questionContainer">
         <h3 id="questions"></h3>
-         <div id="answers-container">
+         <div id="answersContainer">
             <button class="choice"></button>
             <button class="choice"></button>
             <button class="choice"></button>
             <button class="choice"></button>
          </div>
         </div>
-
+<!-- This is where the timer should count down and the score should display, as noted in the startTimer function in my js -->
         <div id="score"></div>
         <div id="timer"></div>
     </div>

@@ -1,11 +1,13 @@
+// Created a bunch of constants and used getElementbyId so that my HTML and Js would link, without needing further changes.
 const gameStart = document.getElementById("gameStart");
-const questionContainer = document.getElementById("question-container");
+const questionContainer = document.getElementById("questionContainer");
 const questionText = document.getElementById("questions");
-const choicesContainer = document.getElementById("answer");
+const choicesContainer = document.getElementById("answersContainer");
 const choiceButtons = document.querySelectorAll(".choice");
 const scoreDisplay =document.getElementById("score");
-const timer = document.getElementById("timer");
+const timerDisplay = document.getElementById("timer");
 
+// I created all of the questions in an array with number properties so they would go to the next question in the array after being answered once
 const questions = [
     {
         number: 0,
@@ -69,11 +71,12 @@ const questions = [
     }
 ];
 
+// Added let expressions so they could be used in my later functions
 let currentQuestionIndex = 0;
 let timeLeft = 60;
 let score = 0;
 let timerInterval;
-
+// Adds the click function to my start button
 gameStart.addEventListener("click", begin);
 
 function begin() {
@@ -83,18 +86,26 @@ function begin() {
     showQuestion();
     startTimer();
 }
-
+// Displays the first question after the game begins. Not sure why it doesn't go to the next question afterwards
 function showQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
     questionText.textContent = currentQuestion.question;
     for (let i = 0; i < 4; i++) {
         choiceButtons[i].textContent = currentQuestion.options[i];
+        currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+            showQuestion();
+         } else {
+            endGame();
+          }
+          
     }
 
 }
-
+// Working on making all of the choice buttons clickable. Not sure why they aren't clicking on a response yet
 choiceButtons.forEach(function (button, index) {
     button.addEventListener("click", function () {
+        const currentQuestion = questions[currentQuestionIndex];
         const selectedOption = currentQuestionIndex.options[index];
             if (selectedOption === currentQuestionIndex.correctAnswer) {
                 score++;
@@ -109,9 +120,10 @@ choiceButtons.forEach(function (button, index) {
             }
     });
 });
-
+// Meant to begin the timer. It activates on the begin function, but nothing is ticking down
 function startTimer() {
-    let timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
+        timerDisplay.textContent = "Time Left:"
         if (timeLeft > 0) {
             timeLeft--;
         } else {
@@ -121,6 +133,7 @@ function startTimer() {
     }, 1000);
 }
 
+// Ends the game when the user is done playing
 function endGame() {
     if (timeLeft >= 0) {
     clearInterval(timerInterval);
