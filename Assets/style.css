@@ -39,6 +39,12 @@ color: white;
 #timer {
 background-color: maroon;
 color: aliceblue;
+font-size: large;
 
 }
 
+#score {
+background-color: maroon;
+color: aliceblue;
+font-size: large;
+}

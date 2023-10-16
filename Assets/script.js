@@ -76,6 +76,7 @@ let currentQuestionIndex = 0;
 let timeLeft = 60;
 let score = 0;
 let timerInterval;
+
 // Adds the click function to my start button
 gameStart.addEventListener("click", begin);
 
@@ -92,27 +93,21 @@ function showQuestion() {
     questionText.textContent = currentQuestion.question;
     for (let i = 0; i < 4; i++) {
         choiceButtons[i].textContent = currentQuestion.options[i];
-        currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-            showQuestion();
-         } else {
-            endGame();
           }
-          
     }
 
-}
 // Working on making all of the choice buttons clickable. Not sure why they aren't clicking on a response yet
 choiceButtons.forEach(function (button, index) {
     button.addEventListener("click", function () {
         const currentQuestion = questions[currentQuestionIndex];
-        const selectedOption = currentQuestionIndex.options[index];
-            if (selectedOption === currentQuestionIndex.correctAnswer) {
+        const selectedOption = currentQuestion.options[index];
+
+            if (selectedOption === currentQuestion.correctAnswer) {
                 score++;
             } else {
                 timeLeft -=5;
             }
-            currentQuestionIndex;
+            currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
                 showQuestion();
             } else {
@@ -120,10 +115,11 @@ choiceButtons.forEach(function (button, index) {
             }
     });
 });
-// Meant to begin the timer. It activates on the begin function, but nothing is ticking down
+
+// The Timer activates on the begin function, but I'm still working on getting the 5 second penalty to activate
 function startTimer() {
     timerInterval = setInterval(function() {
-        timerDisplay.textContent = "Time Left:"
+        timerDisplay.textContent = "Time Left: " + timeLeft;
         if (timeLeft > 0) {
             timeLeft--;
         } else {
@@ -135,7 +131,7 @@ function startTimer() {
 
 // Ends the game when the user is done playing
 function endGame() {
-    if (timeLeft >= 0) {
+    if (timeLeft >= 0 || questions.length) {
     clearInterval(timerInterval);
     scoreDisplay.textContent = "Your Score:" + score;
 }
